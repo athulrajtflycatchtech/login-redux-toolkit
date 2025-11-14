@@ -40,7 +40,7 @@ const Login = () => {
   const handleSubmit = async () => {
     const result = await dispatch(loginUser({ username, password }));
 
-    if (loginUser.fulfilled.match(result)) {
+    if (result) {
       navigate("/dashboard");
     }
   };

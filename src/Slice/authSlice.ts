@@ -14,16 +14,14 @@ const initialState: AuthState = {
   error: null,
 };
 
-// 🔹 Async thunk: calls backend login API
+// Async thunk: calls backend login API
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async (body: { username: string; password: string }, {rejectWithValue}) => {
+  async (body: { username: string; password: string }, { rejectWithValue }) => {
     try {
       const response = await loginService(body);
-      return response; 
+      return response;
     } catch (error: any) {
-        console.log('error-test',error);
-        
       return rejectWithValue(error?.data?.message || "Login failed");
     }
   }
